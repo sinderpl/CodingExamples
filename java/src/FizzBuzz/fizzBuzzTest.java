@@ -9,7 +9,7 @@ import org.junit.Test;
 
 public class fizzBuzzTest{
 	//Amount of output numbers we want to check
-	private int size = 5;
+	private int size = 15;
 	//Instance of the FizzBuzz class
 	FizzBuzz fizzBuzz = new FizzBuzz();
 	
@@ -29,8 +29,9 @@ public class fizzBuzzTest{
 		//the terminal window
 		System.setOut(new PrintStream(output));
 		
-		//The output that we expect for the initial five numbers
-		String expectedOutput = "1\n2\nFizz\n4\nBuzz\n";
+		//The output that we expect for the initial fifteen numbers
+		//This is set to 15 so it checks all outputs = Fizz, Buzz, FizzBuzz and normal number
+		String expectedOutput = "1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz\n";
 		
 		//Call on the class to perform the prinout methods
 		fizzBuzz.printFizzBuzz(size);

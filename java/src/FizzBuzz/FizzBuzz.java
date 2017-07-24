@@ -12,7 +12,7 @@ package FizzBuzz;
 public class FizzBuzz {
 	public static void main(String[] args) {
 		FizzBuzz fizzBuzz = new FizzBuzz();
-		fizzBuzz.printFizzBuzz(50);
+		fizzBuzz.printFizzBuzz(100);
 	}
 	
 	/**
