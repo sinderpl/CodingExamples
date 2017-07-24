@@ -18,6 +18,7 @@ public class fizzBuzzTest{
 	 * 
 	 * @throws Exception In case of issues with the output stream
 	 * 
+	 * Tests whether the output is what it is supposted to be, in terms of the first five numbers
 	 * 
 	 */
 	@Test
