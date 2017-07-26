@@ -14,10 +14,10 @@ var f1 = 1, f2 = 1
 // Eg =
 // no tail recursion = (* 3 (* 2 (* 1 (fact 0))))
 // tail recursive = (fact-tail 2 3)
-const size = 25
+const size = 25;
 
 //Variable storing the sequence
-var sequence = [f1, f2]
+var sequence = [f1, f2];
 
 
 //Calculates the Fibonacci sequence
@@ -25,17 +25,23 @@ function calculateFibonacci(size){
   //Use the seed value as initial in the for loop
     for ( let x = 0; x <= size-2; x++){
         //Calculate the output by adding the two values
-        var output = f1 + f2
+        var output = f1 + f2;
         //Assign the old output to f1
-        f1 = f2
+        f1 = f2;
         //Assign the new output to the f2 value
         //For the calculation in the next iteration
-        f2 = output
+        f2 = output;
         //Add the output to the array
-        sequence.push(output)
+        sequence.push(output);
     }
 }
 
+
+//Simple function for returning the calculated sequence
+function returnSequence(){
+  return sequence;
+}
+
 //Main
-calculateFibonacci(size)
-console.log(sequence)
+//calculateFibonacci(size)
+//console.log(sequence)
