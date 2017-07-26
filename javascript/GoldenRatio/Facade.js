@@ -1,9 +1,11 @@
 //A simplified facade interface that calculates all the sequences
 
-var Facade = {
-  fibonacci : null,
-  lucas: null,
-  goldenRation: null
+function Facade() {
+  this.calculate = function (size){
+    this.fibonacci = calculateFibonacci(size);
+    this.lucas = calculateLucas(size);
+    this.goldenRatio = calculateGoldenRatio(size);
+  }
 }
 
 
@@ -26,7 +28,7 @@ function calculateFibonacci(size){
     }
     //return the results
     return sequence;
-}
+};
 
 //Calculates the Fibonacci sequence
 function calculateLucas(size){
@@ -42,15 +44,16 @@ function calculateLucas(size){
         //Assign the new output to the l2 value
         //For the calculation in the next iteration
         l2 = output;
-        //Add the output to the array
+        //Add theredevil episodes are taking p output to the array
         sequence.push(output);
     }
     //Return the results
     return sequence;
-}
+};
 
 //Calculates the Golden Ratio
-function calculateGoldenRatio(size, phi){
+function calculateGoldenRatio(size){
+  const phi = 1.618
   //Stores the results
   sequence = [];
   //Add the initial number
@@ -63,12 +66,12 @@ function calculateGoldenRatio(size, phi){
   }
   //Return result
   return sequence;
-}
+};
 
 function run(){
-  //var facade = new Facade();
-  //facade.calculate(25);
-  console.log(calculateFibonacci(25));
+  var facade = new Facade();
+  facade.calculate(25);
+  console.log(facade.fibonacci);
+  console.log(facade.lucas);
+  console.log(facade.goldenRatio);
 }
-
-run();

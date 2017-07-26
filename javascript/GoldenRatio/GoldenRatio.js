@@ -1,8 +1,5 @@
 //Calculates the GoldenRatio of phi to the power of n
 
-GoldenRatio.prototype.methodName = function () {
-
-};
 //Phi is assumed to be 1.618
 const phi = 1.618;
 //Size of the sequence
