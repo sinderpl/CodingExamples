@@ -1,6 +1,7 @@
 package stringManipulation;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * 
@@ -31,42 +32,50 @@ public class stringManipulator {
 		//Keeps tabs on current word
 		String currentWord = "";
 		
-		for (char n : word.toCharArray()){
-			
-			
-			
-			if (n != ' '){
-				if (!isCurrentWord && currentWord != ""){
+		char[] charArray = word.toCharArray();
+		
+		
+		for(int x=0; x<word.length(); x++){
+			if(charArray[x] != ' '){
+				isCurrentWord = true;
+				currentWord += charArray[x];
+				letterCount ++;
+			}else{
+				isCurrentWord = false;
+				if (currentWord != ""){
 					wordCount += 1;
 					wordArray.add(currentWord);
 					currentWord = "";
 				}
+			}
+		}
+		if(isCurrentWord && currentWord != ""){
+			wordCount += 1;
+			wordArray.add(currentWord);
+			currentWord = "";
+		}
+			
+			
+		
+		/**
+		for (char n : word.toCharArray()){
+			if (n != ' '){
 				
 				isCurrentWord = true;
 				currentWord += n;
 				letterCount += 1;
 				
+				
 			}else{
 				isCurrentWord = false;
-			}
-			
-			/**
-			if(isCurrentWord){
-				if (n != ' '){
-					currentWord += n;
-					letterCount += 1;
-				}else{
-					isCurrentWord = false;
+				
+				if (currentWord != ""){
 					wordCount += 1;
 					wordArray.add(currentWord);
 					currentWord = "";
 				}
-			}else {
-				if(n == ' '){
-					isCurrentWord = true;
-				}**/
-			
-		}
+			}
+		}**/
 		
 		System.out.println(wordArray);
 		
@@ -85,7 +94,7 @@ public class stringManipulator {
 	public static void main(String[] args) {
 		stringManipulator manipulator = new stringManipulator();
 		
-		manipulator.countAverageLetters(" I am currently interviewing at SAP");
+		manipulator.countAverageLetters(" I am currently interviewing at SAP ");
 		
 
 	}
