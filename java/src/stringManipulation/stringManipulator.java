@@ -33,6 +33,17 @@ public class stringManipulator {
 		
 		for (char n : word.toCharArray()){
 			
+			if (n != ' '){
+				currentWord += n;
+				letterCount += 1;
+			}else{
+				isCurrentWord = false;
+				wordCount += 1;
+				wordArray.add(currentWord);
+				currentWord = "";
+			}
+			
+			/**
 			if(isCurrentWord){
 				if (n != ' '){
 					currentWord += n;
@@ -46,16 +57,17 @@ public class stringManipulator {
 			}else {
 				if(n == ' '){
 					isCurrentWord = true;
-				}
-			}
+				}**/
+			
 		}
-		
 		
 		System.out.println(wordArray);
 		
 		
-		//System.out.printf("wordCount: %d , letterCount: %d \n", wordCount, letterCount);
-		//System.out.printf("Average letter count per word: %f", letterCount/wordCount);
+		System.out.printf("wordCount: %d , letterCount: %d \n", wordCount, letterCount);
+		
+		float average = (float) letterCount/wordCount;
+		System.out.printf("Average letter count per word: %.2f", average);
 	}
 	
 	
