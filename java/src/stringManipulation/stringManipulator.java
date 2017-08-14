@@ -33,14 +33,21 @@ public class stringManipulator {
 		
 		for (char n : word.toCharArray()){
 			
+			
+			
 			if (n != ' '){
+				if (!isCurrentWord && currentWord != ""){
+					wordCount += 1;
+					wordArray.add(currentWord);
+					currentWord = "";
+				}
+				
+				isCurrentWord = true;
 				currentWord += n;
 				letterCount += 1;
+				
 			}else{
 				isCurrentWord = false;
-				wordCount += 1;
-				wordArray.add(currentWord);
-				currentWord = "";
 			}
 			
 			/**
