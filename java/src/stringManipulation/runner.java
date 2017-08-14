@@ -8,6 +8,8 @@ package stringManipulation;
  *
  */
 public class runner {
+	
+	private static String testString = "I am currently interviewing at your company. ";
 
 	/**
 	 * @param args
@@ -15,7 +17,8 @@ public class runner {
 	public static void main(String[] args) {
 		
 		stringManipulator manipulator = new stringManipulator();
-		manipulator.countAverageLetters(" I am currently interviewing at your company ");
+		manipulator.countAverageLetters(testString);
+		manipulator.reverse(testString);
 
 	}
 

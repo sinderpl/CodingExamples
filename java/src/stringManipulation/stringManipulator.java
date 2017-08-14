@@ -37,7 +37,7 @@ public class stringManipulator {
 		//Calculate the average amount of letter per word
 		float average = (float) letterCount/wordCount;
 		//Print the average
-		System.out.printf("Average letter count per word: %d / %d = %.2f", letterCount, wordCount, average);
+		System.out.printf("Average letter count per word: %d / %d = %.2f \n", letterCount, wordCount, average);
 	}
 	
 	/**
@@ -90,6 +90,23 @@ public class stringManipulator {
 		//Return the output
 		return stringArray;
 	}//End Method
-
+	
+	/**
+	 * 
+	 * @param string string to be reversed
+	 * @return A reverse String value is returned
+	 */
+	public String reverse(String string){
+		//Reversed string
+		String reverse = "";
+		//Iterate through each character in the string
+		for(int x = string.length()-1; x >= 0; x--){
+			reverse += string.charAt(x);
+		}
+		//Print out the results
+		System.out.printf("Original: %s , Reversed: %s \n", string, reverse );
+		//Returns the reversed string
+		return reverse;
+	}//End of method
 
 }//End class
