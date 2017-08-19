@@ -19,6 +19,7 @@ public class runner {
 		stringManipulator manipulator = new stringManipulator();
 		manipulator.countAverageLetters(testString);
 		manipulator.reverse(testString);
+		manipulator.reverseWords(testString);
 
 	}
 

@@ -104,9 +104,35 @@ public class stringManipulator {
 			reverse += string.charAt(x);
 		}
 		//Print out the results
-		System.out.printf("Original: %s , Reversed: %s \n", string, reverse );
+		System.out.printf("Original: %s | Reversed: %s \n", string, reverse );
 		//Returns the reversed string
 		return reverse;
 	}//End of method
-
+	
+	/**
+	 * 
+	 * Returns the original string with the word placement reversed
+	 * 
+	 * @param string the input string in which we want the words to be reversed
+	 * @return A string with the words in the sentence reversed
+	 */
+	public String reverseWords(String string){
+		//Output string
+		String result = "";
+		
+		//Split the words into an array using the spit method
+		ArrayList<String> splitWords = split(string);
+		
+		//Reverse the words in the sentence
+		for(String word : splitWords){
+			//Add the words to the output working your way backwards
+			result += " "+word;
+		}
+		
+		//Output visual result
+		System.out.printf("Original: %s | Reversed words: %s" , string, result);
+		
+		//Return the output
+		return result;
+	}
 }//End class
