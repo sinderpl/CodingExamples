@@ -130,9 +130,35 @@ public class stringManipulator {
 		}
 		
 		//Output visual result
-		System.out.printf("Original: %s | Reversed words: %s" , string, result);
+		System.out.printf("Original: %s | Reversed words: %s \n" , string, result);
 		
 		//Return the output
 		return result;
 	}
+
+	/**
+	 *  Checks whether a string is a palindrome, eg radar = true, cup = false
+	 *  The word has to be the same when reversed
+	 * @param string The input string to be verified whether it is a palindrome
+	 * @return A boolean value representing whether the input is a palindrome
+	 */
+	public boolean isPalindrome(String string){
+		//Output string
+		boolean result;
+		
+		//Reverse the string
+		String reversed = reverse(string);
+		
+		//Check whether the reverse string is equal to original
+		if(string.equals(reversed))
+			result = true;
+		else
+			result = false;
+		
+		System.out.printf("Is %s a palindrome : %b \n" , string, result);
+		
+		//Return the result
+		return result;
+	}
+
 }//End class

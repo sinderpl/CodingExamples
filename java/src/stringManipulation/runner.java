@@ -20,6 +20,9 @@ public class runner {
 		manipulator.countAverageLetters(testString);
 		manipulator.reverse(testString);
 		manipulator.reverseWords(testString);
+		
+		manipulator.isPalindrome("radar");
+		manipulator.isPalindrome("cup");
 
 	}
 
