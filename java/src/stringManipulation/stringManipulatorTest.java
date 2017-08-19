@@ -14,6 +14,11 @@ import org.junit.runners.Parameterized.Parameters;
 @RunWith(Parameterized.class)
 public class stringManipulatorTest {
 	
+	/**
+	 * https://github.com/junit-team/junit4/wiki/Parameterized-tests
+	 * Tests based on this tutorial
+	 */
+	
 	//Variable declarations
 	final String testString = "I am currently interviewing at your company. ";
 	private stringManipulator manipulator;
@@ -26,11 +31,6 @@ public class stringManipulatorTest {
 		manipulator  = new stringManipulator();	
 	}
 	
-	/**
-	public AverageLetterTest(boolean expectedResult, String string){
-		
-	}**/
-	
 	//Set up the parameters for the calss
 	@Parameters
 	public static Collection palindromeParams(){
@@ -42,14 +42,18 @@ public class stringManipulatorTest {
 		});
 	}
 	
-	
+	/**
+	 *  Assigns the two test values and tests the output
+	 * @param expectedResult The boolean value expected to be returned by the method
+	 * @param string The string to be tested in the isPalindrome method
+	 */
 	public stringManipulatorTest(boolean expectedResult, String string){
 		this.expectedResult = expectedResult;
 		this.string = string;
 	}
-
+	
 	@Test
-	public void testAverageLetters() {
+	public void testIsPalindrome() {
 		assertEquals(expectedResult, manipulator.isPalindrome(string));
 	}
 
