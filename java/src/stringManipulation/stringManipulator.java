@@ -16,8 +16,9 @@ public class stringManipulator {
 	 * Counts the average amount of letters per word in a string
 	 * It does not use anything like split() to find the words
 	 * @param String word - The string sentence to be split and counted
+	 * @return A float value representing the average amount of letters in a word
 	 */
-	public void countAverageLetters(String sentence){
+	public float countAverageLetters(String sentence){
 		
 		//Split the string up into words
 		ArrayList<String> wordArray=  split(sentence);
@@ -33,11 +34,14 @@ public class stringManipulator {
 		}
 		
 		//Print out the word and letter count
-		System.out.printf("WordCount: %d , LetterCount: %d \n", wordCount, letterCount);
+		//System.out.printf("WordCount: %d , LetterCount: %d \n", wordCount, letterCount);
 		//Calculate the average amount of letter per word
 		float average = (float) letterCount/wordCount;
 		//Print the average
-		System.out.printf("Average letter count per word: %d / %d = %.2f \n", letterCount, wordCount, average);
+		//System.out.printf("Average letter count per word: %d / %d = %.2f \n", letterCount, wordCount, average);
+		
+		//Return the output
+		return average;
 	}
 	
 	/**
@@ -104,7 +108,7 @@ public class stringManipulator {
 			reverse += string.charAt(x);
 		}
 		//Print out the results
-		System.out.printf("Original: %s | Reversed: %s \n", string, reverse );
+		//System.out.printf("Original: %s | Reversed: %s \n", string, reverse );
 		//Returns the reversed string
 		return reverse;
 	}//End of method
@@ -130,7 +134,7 @@ public class stringManipulator {
 		}
 		
 		//Output visual result
-		System.out.printf("Original: %s | Reversed words: %s \n" , string, result);
+		//System.out.printf("Original: %s | Reversed words: %s \n" , string, result);
 		
 		//Return the output
 		return result;
@@ -155,7 +159,7 @@ public class stringManipulator {
 		else
 			result = false;
 		
-		System.out.printf("Is %s a palindrome : %b \n" , string, result);
+		//System.out.printf("Is %s a palindrome : %b \n" , string, result);
 		
 		//Return the result
 		return result;
