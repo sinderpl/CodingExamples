@@ -17,10 +17,11 @@ public class runner {
 	public static void main(String[] args) {
 		
 		stringManipulator manipulator = new stringManipulator();
+		
+		System.out.println(manipulator.reverse("trouble"));
 		manipulator.countAverageLetters(testString);
 		manipulator.reverse(testString);
 		manipulator.reverseWords(testString);
-		
 		manipulator.isPalindrome("radar");
 		manipulator.isPalindrome("cup");
 

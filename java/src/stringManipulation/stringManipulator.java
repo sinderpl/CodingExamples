@@ -112,6 +112,17 @@ public class stringManipulator {
 		//Returns the reversed string
 		return reverse;
 	}//End of method
+
+	/**
+	 * Does a string reverse in one line using stringBuilder
+	 * @param string The input string to be reversed
+	 * @return	The resulting reversed string
+	 */
+	public String reverseBuilder(String string){
+		return new StringBuilder(string).reverse().toString();
+		//return reversed;
+	}
+	
 	
 	/**
 	 * 
