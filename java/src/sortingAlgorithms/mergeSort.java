@@ -105,4 +105,11 @@ public class mergeSort extends sortingAlgorithm {
 		//Return the two sorted arrays
 		return result;
 	}
+
+	@Override
+	public ArrayList<Integer> sort(ArrayList<Integer> toSort) {
+		// TODO Auto-generated method stub
+		return null;
+		
+	}
 }

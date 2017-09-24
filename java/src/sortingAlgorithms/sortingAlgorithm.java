@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * 
  * A parent class for the sorting algorithms.
  */
-public class sortingAlgorithm {
+public abstract class sortingAlgorithm {
 
 	/**
 	 * Checks value by value to see whether the array is sorted
@@ -29,5 +29,11 @@ public class sortingAlgorithm {
 		}else
 			return false;
 	}//End of method
+	
+	/**
+	 * To be implemented by any children allowing for a universal sorting name
+	 * @param toSort Integer array you want to sort
+	 */
+	public abstract ArrayList<Integer> sort(ArrayList<Integer> toSort);
 
 }//End of class
