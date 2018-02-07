@@ -1,0 +1,99 @@
+import java.util.Arrays;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class CodeWarsSolutions
+{
+
+   /**
+    * Finds the index in the array where the left side is equal to the right
+    * Returns -1 by default
+    * 
+    * @param arr
+    *           Input array of integers
+    * @return
+    */
+   public static int findEvenIndex(int[] arr)
+   {
+      int totalLeft = arr[0];
+      // Total up the right side of the array
+      int totalRight = Arrays.stream(arr).sum() - arr[0];
+
+      int index = -1;
+
+      for (int x = 1; x < arr.length; x++)
+      {
+         totalRight -= arr[x];
+         if (totalLeft == totalRight)
+         {
+            return x;
+         }
+         totalLeft += arr[x];
+      }
+      return index;
+   }
+
+   /**
+    * Returns the input integer in its expanded form
+    * EG. 702 returns as "700 + 2"
+    * 
+    * @param num
+    * @return
+    */
+   public static String expandedForm(int num)
+   {
+      int multiplier = 1;
+      StringBuilder strBuild = new StringBuilder();
+      for (int size = String.valueOf(num).length(); size >= 0; size--)
+      {
+         // Retrieves the last value in the int
+         int currentNum = num % 10;
+         // Removes the last value in the int
+         num = num / 10;
+         // Makes sure the + is not appended to the first number
+         if (currentNum != 0 && size != 1)
+         {
+            strBuild.insert(0, " + " + (currentNum * multiplier));
+         }
+         else if (size == 1)
+         {
+            strBuild.insert(0, (currentNum * multiplier));
+         }
+         // Increments the multiplier to add correct amount of zeros
+         multiplier *= 10;
+      }
+      return strBuild.toString();
+   }
+
+   /**
+    * Counts smiley faces
+    * 
+    * Rules for a smiling face:
+    * -Each smiley face must contain a valid pair of eyes. Eyes can be marked as : or ;
+    * -A smiley face can have a nose but it does not have to. Valid characters for a nose are - or ~
+    * -Every smiling face must have a smiling mouth that should be marked with either ) or D.
+    * No additional characters are allowed except for those mentioned.
+    * 
+    * @param arr
+    * @return number of valid smiley faces
+    */
+   public static int countSmileys(List<String> arr)
+   {
+      int smileyCounter = 0;
+
+      // Pattern
+      Pattern pattern = Pattern.compile("[\\;|:][-|~]?[)|D]\\Z");
+      // Iterate through each smiley face to validate it
+      for (String s : arr)
+      {
+         // Check for validity
+         Matcher matcher = pattern.matcher(s);
+         if (matcher.matches())
+         {
+            smileyCounter++;
+         }
+      }
+      return smileyCounter;
+   }
+}
