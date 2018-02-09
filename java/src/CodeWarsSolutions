@@ -15,76 +15,27 @@ public class CodeWarsSolutions
     * @param strng
     * @return
     */
-   public static String orderWeight(String strng)
-   {
+   public static String orderWeight(String string) {
+      //Split
+      ///sort with custom comparator
+      //compare
       
-
-      // We trim any trailing and leading whitespace and remove anything that isnt a number
-      ArrayList<String> inputWeights = new ArrayList<>(Arrays.asList((strng.trim()).split("[^0-9]+")));
-      if(inputWeights.size() <= 1)
+      String[] numbers = string.split(" ");
+      Arrays.sort(numbers, new Comparator<String>()
       {
-         return strng;
-      }
-      
-      String output = "";
-      Collections.sort(inputWeights);
-      ArrayList<Integer> sortedOutput = new ArrayList<>();
-
-      // Convert the weights
-      for (String s : inputWeights)
-      {
-         int currentWeight = 0;
-         
-         for(String p : s.split(""))
+         //Custom compare method
+         public int compare(String first, String second)
          {
-            currentWeight += Integer.parseInt(p);
+            //Sums up any numeric values in the string to be used to compare the weights
+            int weightFirst = first.chars().map(ch -> Character.getNumericValue(ch)).sum();
+            int weightSecond =  second.chars().map(ch -> Character.getNumericValue(ch)).sum();
+            //if weights are different we return the difference 
+            //else both weights are the same, we compare the original string values
+            return weightFirst - weightSecond != 0 ? weightFirst - weightSecond : first.compareTo(second);
          }
-         sortedOutput.add(currentWeight);
-      }
-
-      //Sort the output according to the weight
-      boolean isSorted = false;
-      while (!isSorted)
-      {
-         isSorted = true;
-
-         // Iterate through each number
-         for (int x = 0; x < sortedOutput.size() - 1; x++)
-         {
-            if (sortedOutput.get(x + 1) != null && sortedOutput.get(x) > sortedOutput.get(x + 1))
-            {
-               //Swap in the modified value array;
-               Integer temp = sortedOutput.get(x + 1);
-               sortedOutput.set(x + 1, sortedOutput.get(x));
-               sortedOutput.set(x, temp);
-               
-               //Swap in the original value array
-               String tempS = inputWeights.get(x + 1);
-               inputWeights.set(x + 1, inputWeights.get(x));
-               inputWeights.set(x, tempS);
-
-               isSorted = false;
-            }
-         }
-      }
-
-      // Create the output string
-      StringBuilder str = new StringBuilder();
-      for (int x = 0 ; x < inputWeights.size(); x++)
-      {
-         String s  = inputWeights.get(x);
-         if (x != 0)
-         {
-            str.append(" ");
-            str.append(s);
-         }
-         else
-         {
-            str.append(s);
-         }
-      }
-      return str.toString();
-   }
+      });
+      return String.join(" ", numbers);
+    }
 
      /**
     * Takes in a sentence then returns the same string but with
