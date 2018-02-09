@@ -7,13 +7,10 @@ public class CodeWarsSolutions
 {
 
 
-     /**
+    /**
     * Arranges the input string weights according to the weight calculated
     * by adding the digits of the number (100 = 1 , 99 = 18)
     * In case of values that are the same in weight,  the actual number is used to set priority
-    * Does not work for integers that are too big.
-    * No idea how the writer expects people to solve it.
-    * Tried using BigInteger but idk.
     * 
     * @param strng
     * @return
@@ -37,23 +34,12 @@ public class CodeWarsSolutions
       for (String s : inputWeights)
       {
          int currentWeight = 0;
-         try
+         
+         for(String p : s.split(""))
          {
-         currentWeight = Integer.parseInt(s);
+            currentWeight += Integer.parseInt(p);
          }
-         catch (Exception e) {
-            // TODO: handle exception
-         }
-         int numTotal = 0;
-
-         while (currentWeight > 0)
-         {
-            // Add the last digit to the total
-            numTotal += currentWeight % 10;
-            // Remove the last number
-            currentWeight = currentWeight / 10;
-         }
-         sortedOutput.add(numTotal);
+         sortedOutput.add(currentWeight);
       }
 
       //Sort the output according to the weight
@@ -73,9 +59,9 @@ public class CodeWarsSolutions
                sortedOutput.set(x, temp);
                
                //Swap in the original value array
-               temp = Integer.parseInt(inputWeights.get(x + 1));
+               String tempS = inputWeights.get(x + 1);
                inputWeights.set(x + 1, inputWeights.get(x));
-               inputWeights.set(x, temp.toString());
+               inputWeights.set(x, tempS);
 
                isSorted = false;
             }
