@@ -69,9 +69,26 @@ public class CodeWarsSolutions
          //Makes sure the space is not appended at the start
          isFirst = false;
       }
-      
       return strBuilder.toString();
    }
+   
+   //Spin words using streams for practice
+   //   public static String spinWords(String sentence)
+//   {
+//      ArrayList<String> output= new ArrayList<>(Arrays.asList(sentence.split("[^\\w]+")));
+//      
+//      output.stream()
+//      .forEach(word -> 
+//      {
+//         if(word.length() > 5)
+//         {
+//            output.set(output.indexOf(word), (new StringBuilder(word).reverse()).toString());
+//         }
+//      });
+//      
+//      return String.join(" ", output);
+//   }
+   
 
    /**
     * Finds the index in the array where the left side is equal to the right
