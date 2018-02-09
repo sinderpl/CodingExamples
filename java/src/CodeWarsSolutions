@@ -8,6 +8,99 @@ public class CodeWarsSolutions
 
 
      /**
+    * Arranges the input string weights according to the weight calculated
+    * by adding the digits of the number (100 = 1 , 99 = 18)
+    * In case of values that are the same in weight,  the actual number is used to set priority
+    * Does not work for integers that are too big.
+    * No idea how the writer expects people to solve it.
+    * Tried using BigInteger but idk.
+    * 
+    * @param strng
+    * @return
+    */
+   public static String orderWeight(String strng)
+   {
+      
+
+      // We trim any trailing and leading whitespace and remove anything that isnt a number
+      ArrayList<String> inputWeights = new ArrayList<>(Arrays.asList((strng.trim()).split("[^0-9]+")));
+      if(inputWeights.size() <= 1)
+      {
+         return strng;
+      }
+      
+      String output = "";
+      Collections.sort(inputWeights);
+      ArrayList<Integer> sortedOutput = new ArrayList<>();
+
+      // Convert the weights
+      for (String s : inputWeights)
+      {
+         int currentWeight = 0;
+         try
+         {
+         currentWeight = Integer.parseInt(s);
+         }
+         catch (Exception e) {
+            // TODO: handle exception
+         }
+         int numTotal = 0;
+
+         while (currentWeight > 0)
+         {
+            // Add the last digit to the total
+            numTotal += currentWeight % 10;
+            // Remove the last number
+            currentWeight = currentWeight / 10;
+         }
+         sortedOutput.add(numTotal);
+      }
+
+      //Sort the output according to the weight
+      boolean isSorted = false;
+      while (!isSorted)
+      {
+         isSorted = true;
+
+         // Iterate through each number
+         for (int x = 0; x < sortedOutput.size() - 1; x++)
+         {
+            if (sortedOutput.get(x + 1) != null && sortedOutput.get(x) > sortedOutput.get(x + 1))
+            {
+               //Swap in the modified value array;
+               Integer temp = sortedOutput.get(x + 1);
+               sortedOutput.set(x + 1, sortedOutput.get(x));
+               sortedOutput.set(x, temp);
+               
+               //Swap in the original value array
+               temp = Integer.parseInt(inputWeights.get(x + 1));
+               inputWeights.set(x + 1, inputWeights.get(x));
+               inputWeights.set(x, temp.toString());
+
+               isSorted = false;
+            }
+         }
+      }
+
+      // Create the output string
+      StringBuilder str = new StringBuilder();
+      for (int x = 0 ; x < inputWeights.size(); x++)
+      {
+         String s  = inputWeights.get(x);
+         if (x != 0)
+         {
+            str.append(" ");
+            str.append(s);
+         }
+         else
+         {
+            str.append(s);
+         }
+      }
+      return str.toString();
+   }
+
+     /**
     * Takes in a sentence then returns the same string but with
     * all five or more letter words reversed.
     * Alpha & Spaces only.
