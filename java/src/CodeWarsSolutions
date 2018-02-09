@@ -6,6 +6,43 @@ import java.util.regex.Pattern;
 public class CodeWarsSolutions
 {
 
+
+     /**
+    * Takes in a sentence then returns the same string but with
+    * all five or more letter words reversed.
+    * Alpha & Spaces only.
+    * 
+    * @param sentence
+    * @return
+    */
+   public String spinWords(String sentence) {
+      
+      StringBuilder strBuilder = new StringBuilder();
+      boolean isFirst = true;
+
+      //Iterate through each word in the string
+      //Regex accounts for 
+      for(String s : sentence.split("[^\\w]+")){
+         if(!isFirst)
+         {
+            strBuilder.append(" ");
+         }
+         if(s.length() > 5)
+         {
+            //Reverse any 5 words strings and add to output
+            strBuilder.append(new StringBuilder(s).reverse().toString());
+         }
+         else
+         {
+           strBuilder.append(s);
+         }
+         //Makes sure the space is not appended at the start
+         isFirst = false;
+      }
+      
+      return strBuilder.toString();
+   }
+
    /**
     * Finds the index in the array where the left side is equal to the right
     * Returns -1 by default
