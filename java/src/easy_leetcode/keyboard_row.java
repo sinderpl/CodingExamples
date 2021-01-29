@@ -37,4 +37,41 @@ class Solution {
         strArr = outputWords.toArray(strArr);
         return strArr; 
     }
+
+
+    /**
+     * Much faster and less space since it uses a hashtable for ascii
+     */
+    public String[] findWords(String[] words) {
+        
+        int[] charHash = new int[26];
+        for(char c : "qwertyuiop".toCharArray()){ charHash[c - 'a'] = 1;}
+        for(char c : "asdfghjkl".toCharArray()){ charHash[c - 'a'] = 2;}
+        for(char c : "zxcvbnm".toCharArray()){ charHash[c - 'a'] = 3;}
+        ArrayList<String> outputs = new ArrayList<>();
+        
+        for(String word : words){
+            int curr = -1;
+            boolean canType = false;
+            for(char c : word.toCharArray()){
+                char h = Character.toLowerCase(c);
+                if(curr == -1){
+                    curr = charHash[h - 'a'];
+                    canType = true;
+                } else if (curr != charHash[h - 'a']){
+                    canType = false;
+                    break;
+                }
+            }
+            if(canType) {outputs.add(word);}
+            curr = -1;
+            canType = false;
+        }
+        
+        String[] wordsArr = new String[outputs.size()];
+        wordsArr = outputs.toArray(wordsArr);
+        return wordsArr;
+    }
+
+
 }
