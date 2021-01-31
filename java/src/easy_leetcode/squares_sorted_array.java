@@ -18,7 +18,7 @@ Output: [4,9,9,49,121]
 class Solution {
     public int[] sortedSquares(int[] nums) {
         for(int i = 0; i < nums.length; i++){
-            nums[i] = (int) Math.pow(nums[i], 2);
+            nums[i] *= nums[i]; 
         }
         Arrays.sort(nums);
         return nums;
