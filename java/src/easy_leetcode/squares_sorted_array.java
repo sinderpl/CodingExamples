@@ -24,3 +24,34 @@ class Solution {
         return nums;
     }
 }
+
+
+/**
+ * This is a really cool solution utilising binary search to insert values at right point in the code.
+ * I believe it will only however work for non decreasing arrays
+ * 
+ */
+
+class Solution {
+    public int[] sortedSquares(int[] nums) {
+        int[] res = new int[nums.length];
+        //Keep track of left and right indexes to slowly move inwards using two pointes
+        int l = 0, r = nums.length - 1;
+        //normal index track to keep of 
+        int index = r;
+        
+        while(l  <= r){
+            // The absolute value here is a non negative representation of a number
+            // We simply choose the bigger value at each step since pow will remove any negative signs.
+            // The biggest value is then appended to the end of the array.
+            if(Math.abs(nums[l]) > Math.abs(nums[r])){
+                res[index--] = nums[l] * nums[l];
+                l++;
+            } else {
+                res[index--] = nums[r] * nums[r];
+                r--;
+            }
+        }
+        return res;
+    }
+}
