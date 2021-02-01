@@ -44,4 +44,16 @@ class Solution {
         
         return isFound ? index : -1;
     }
+
+    public int firstUniqChar(String s) {
+        if(s.isEmpty()) return -1;
+        int firstUniq = s.length();
+        for(char x = 'a'; x <= 'z'; x++){
+            int leftOccur = s.indexOf(x);
+            if(leftOccur != -1 && leftOccur == s.lastIndexOf(x)){
+                firstUniq = Math.min(firstUniq, leftOccur);
+            }
+        }
+        return firstUniq == s.length() ? -1 : firstUniq; 
+    }
 }
