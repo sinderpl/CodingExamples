@@ -25,3 +25,21 @@ class Solution {
         return 'a';
     }
 }
+
+
+/**
+ * We only need to calculate the totals 
+ */
+class Solution {
+    public char findTheDifference(String s, String t) {
+        int totalT  = 0;
+        for(char c : t.toCharArray()){
+            totalT += c;
+        }
+        
+        for(char c : s.toCharArray()){
+            totalT -= c;
+        }
+        return (char)totalT;
+    }
+}
