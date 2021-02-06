@@ -25,7 +25,7 @@ Output: "0"
 
 class Solution {
     public String thousandSeparator(int n) {
-        if(n == 0) return "0";
+        if(n <  1000) return Integer.toString(n);
         StringBuilder res = new StringBuilder();
         int counter = 0;
         while(n > 0){
