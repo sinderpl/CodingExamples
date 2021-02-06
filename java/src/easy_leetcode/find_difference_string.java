@@ -16,7 +16,7 @@ class Solution {
         }  
         
         for(int c : s.toCharArray()){
-            letters[c -'a']--;
+            letters[c -'a']--; 
         }
         
         for(int i=0;i<26;i++){
