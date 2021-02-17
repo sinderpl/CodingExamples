@@ -36,17 +36,13 @@ Explanation: Your function should return length = 5, with the first five element
 class Solution {
     public int removeDuplicates(int[] nums) {
         if(nums.length <= 1) return nums.length;
-        int currPointer = 0;
-        int currNumber = nums[0];
-        
+        int currPointer = 1;  
         for(int i = 1; i < nums.length; i++){
-            if(nums[i] != currNumber){
-                currPointer++;
+            if(nums[i] > nums[i-1]){
                 nums[currPointer] = nums[i];
-                currNumber = nums[i];
+                currPointer++;
             }
         }
-        return ++currPointer;
+        return currPointer;
     }
 }
-
