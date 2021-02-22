@@ -1,3 +1,5 @@
+package sortingAlgorithms;
+
 import java.util.ArrayList;
 
 /**
@@ -32,6 +34,32 @@ public class SelectionSort extends sortingAlgorithm{
 		}
 		
 		return toSort;
+	}
+	
+	interface pp{
+		int k = 2;
+		static void pol(){};
+	}
+	
+	class cc {
+		cc(String s){
+			
+		}
+	}
+	
+	class kk extends cc implements pp{
+		int k = 1;
+		
+		
+		kk(){
+			super("");
+		}
+	}
+	
+	void callINt(){
+		pp cl = new kk();
+		kk instance = new kk();
+		pp.pol();
 	}
 
 }
