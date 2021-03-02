@@ -1,3 +1,5 @@
+package sortingAlgorithms;
+
 import java.util.ArrayList;
 
 public class BucketSort extends sortingAlgorithm {
