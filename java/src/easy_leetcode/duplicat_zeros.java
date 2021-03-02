@@ -32,3 +32,33 @@ class Solution {
             
     }
 }
+
+//Actual solutons WORK BACKWARDS goddamn
+
+public void duplicateZeros(int[] arr) {
+    int zerocounts = 0;
+    int len = arr.length - 1;
+    for (int i = 0; i <= len - zerocounts; i++) {
+        if (arr[i] == 0) {
+            if (i == len - zerocounts) {
+                arr[len] = 0;
+                len--;
+                break;
+            }
+            zerocounts++;
+        }
+    }
+    System.out.println(zerocounts);
+    System.out.println(Arrays.toString(arr));
+    int last = len - zerocounts;
+    for (int i = last; i >= 0; i--) {
+        if (arr[i] == 0) {
+            arr[i + zerocounts] = 0;
+            zerocounts--;
+            arr[i + zerocounts] = 0;
+        } else {
+            arr[i + zerocounts] = arr[i];
+        }
+        System.out.println(Arrays.toString(arr));
+    }
+}
