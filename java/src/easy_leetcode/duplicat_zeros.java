@@ -37,10 +37,11 @@ class Solution {
 
 public void duplicateZeros(int[] arr) {
     int zerocounts = 0;
-    int len = arr.length - 1;
+    int len = arr.length - 1; //we only count up to len - zero because the left side will be pushed out until then
     for (int i = 0; i <= len - zerocounts; i++) {
         if (arr[i] == 0) {
-            if (i == len - zerocounts) {
+            //Corner case for trailing zeroes
+            if (i == len - zerocounts) { 
                 arr[len] = 0;
                 len--;
                 break;
@@ -50,8 +51,12 @@ public void duplicateZeros(int[] arr) {
     }
     System.out.println(zerocounts);
     System.out.println(Arrays.toString(arr));
+    // Start moving from the last number occuring before being cut off,  the rest doesnt matter
     int last = len - zerocounts;
+    //Work backawards one step at a time
     for (int i = last; i >= 0; i--) {
+        //i +  zeroCount provides the actual index of where to move the paramete
+        //AFTER the current index being moved.
         if (arr[i] == 0) {
             arr[i + zerocounts] = 0;
             zerocounts--;
