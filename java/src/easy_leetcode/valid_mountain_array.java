@@ -35,3 +35,26 @@ class Solution {
         return isDecline;
     }
 }
+
+//Cleaner solution
+class Solution {
+    public boolean validMountainArray(int[] arr) {
+        if( arr.length < 3) return false;
+        int step = 0;
+        
+        //Walking up
+        while(step + 1 < arr.length && arr[step] < arr[step+1]){
+            step++;
+        }
+        
+        if(step == 0 || step == arr.length - 1)
+            return false;
+        
+        //Walk down
+        while(step + 1 < arr.length && arr[step] > arr[step+1]){
+            step++;
+        }
+        
+        return step == arr.length-1;
+    }
+}
