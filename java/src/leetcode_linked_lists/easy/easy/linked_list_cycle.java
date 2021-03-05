@@ -6,3 +6,38 @@ There is a cycle in a linked list if there is some node in the list that can be 
 Return true if there is a cycle in the linked list. Otherwise, return false.
  * 
  */
+
+ //Naive solution
+ public class Solution {
+    public boolean hasCycle(ListNode head) {
+        HashSet<ListNode> visited = new HashSet();
+        ListNode curr = head;
+        while(curr != null){
+            if(visited.contains(curr))
+                return true;
+            else
+                visited.add(curr);
+            curr = curr.next;   
+        }
+        return false;
+    }
+}
+
+//Better two pointer solution
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+        while(fast != null){
+            if(fast.next != null && fast.next.next != null)
+                fast = fast.next.next;
+            else 
+                return false;
+            slow = slow.next;
+            if(slow == fast)
+                return true;
+        }
+        
+        return false;
+    }
+} 
