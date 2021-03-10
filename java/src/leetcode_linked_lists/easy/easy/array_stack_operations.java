@@ -34,3 +34,23 @@ class Solution {
         return res;
     }
 }
+
+class Solution {
+    public List<String> buildArray(int[] target, int n) {
+        List<String> res = new ArrayList<>();
+        int s = 0;
+        
+        
+    for(int i = 1; s != target.length && i <= n;  i++){
+        if(target[s] == i){
+            res.add("Push");
+            s++;
+        } else{
+            res.add("Push");
+            res.add("Pop");
+        }
+    }
+        
+        return res;
+    }
+}
