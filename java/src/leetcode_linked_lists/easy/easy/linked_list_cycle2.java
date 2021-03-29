@@ -6,18 +6,33 @@ There is a cycle in a linked list if there is some node in the list that can be 
 Notice that you should not modify the linked list.
  */
 
- //Naive solution
- public class Solution {
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
     public ListNode detectCycle(ListNode head) {
         if(head == null || head.next == null) return null;
-        HashSet<ListNode> visited = new HashSet<>();
-        
-        while(head != null){
-            if(visited.contains(head))
-                return head;
-            else
-                visited.add(head);
-            head = head.next;
+        ListNode ptr1 = head;
+        ListNode ptr2 = head;
+        while(ptr1.next != null  && ptr1.next.next != null){
+            ptr1 = ptr1.next.next;
+            ptr2 = ptr2.next;
+            if(ptr1 == ptr2){
+                ptr2 = head;
+                while(ptr1 != ptr2){
+                    ptr1 = ptr1.next;
+                    ptr2 = ptr2.next;
+                }
+                return ptr1;
+            }
         }
         return null;
     }
