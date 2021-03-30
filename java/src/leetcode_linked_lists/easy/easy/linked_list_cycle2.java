@@ -17,16 +17,20 @@ Notice that you should not modify the linked list.
  *     }
  * }
  */
+
+ //floyds
 public class Solution {
     public ListNode detectCycle(ListNode head) {
         if(head == null || head.next == null) return null;
         ListNode ptr1 = head;
         ListNode ptr2 = head;
-        while(ptr1.next != null  && ptr1.next.next != null){
+        while(ptr1.next != null  && ptr2.next.next != null){
             ptr1 = ptr1.next.next;
             ptr2 = ptr2.next;
+            //Find if cycle exists
             if(ptr1 == ptr2){
                 ptr2 = head;
+                //If it does return one pointer to start and increment in 1 div until they meet
                 while(ptr1 != ptr2){
                     ptr1 = ptr1.next;
                     ptr2 = ptr2.next;
