@@ -1,12 +1,18 @@
 class Solution:
     import math
     def sortedSquares(self, nums: List[int]) -> List[int]:
-        res = list()
+        res = [0] * len(nums)
+        left = 0
+        right = len(nums) -1
+        index = right
         
-        for num in nums:
-            res.append(num ** 2)
-            
-        res.sort()
-        
+        while left <= right:
+            if abs(nums[left]) > abs(nums[right]):
+                res[index] = nums[left] ** 2
+                left += 1
+            else:
+                res[index] = nums[right] ** 2
+                right -= 1
+            index -= 1
         
         return res
