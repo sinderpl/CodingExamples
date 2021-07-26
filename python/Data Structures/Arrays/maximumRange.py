@@ -53,3 +53,29 @@ class Solution:
         
         return 1950 + max_year
         
+
+
+
+class Solution:
+    def maximumPopulation(self, logs: List[List[int]]) -> int:
+        
+        years_mapped = [0] * 101
+        constant_diff = 1950
+        # Map each person = O(n)
+        # here a running tally is utilised for the total pop count
+        for years in logs:
+            years_mapped[years[0] - constant_diff] += 1
+            years_mapped[years[1] - constant_diff] -= 1
+            
+        max_year = 0
+        running_pop = 0
+        max_sum = 0
+        for year, count in enumerate(years_mapped):
+            running_pop += count
+            
+            if running_pop > max_sum:
+                max_sum = running_pop
+                max_year = year
+        
+        return max_year + constant_diff
+        
