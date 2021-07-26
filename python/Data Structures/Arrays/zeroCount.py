@@ -4,26 +4,27 @@ class Solution:
         Do not return anything, modify arr in-place instead.
         """
         zeroCount = 0
-        i = len(arr) - 1
-        n = len(arr)
-        for idx, num in enumerate(arr):
+        length = len(arr)
+        idx = length -1
+
+        for num in arr:
             if num == 0:
                 zeroCount += 1
-                
-        write = i + zeroCount
-        while i >= 0 and zeroCount >= 0:
-            if arr[i] != 0:
-                if write < n:
-                    arr[write] = arr[i]
+        
+        write = idx + zeroCount
+        
+        while idx >= 0 and zeroCount >= 0:
+            if arr[idx] != 0:
+                if write < length:
+                    arr[write] = arr[idx]
             else:
-                if write < n:
+                if write < length:
                     arr[write] = 0
                 write -= 1
-                if write < n:
+                if write < length:
                     arr[write] = 0
-            i -= 1
+            idx -= 1
             write -= 1
-        print(zeroCount)
         
 
 #Uses additional space complexity that is not neeeded
