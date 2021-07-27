@@ -10,3 +10,17 @@ class Solution:
                 currNum = val
                 currIndex += 1
         return currIndex
+
+    class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        if len(nums) <= 1:
+            return 1
+        curr = 1
+        
+        for idx in range(1, len(nums)):
+            if nums[idx] != nums[idx -1]:
+                nums[curr] = nums[idx]
+                curr += 1
+                
+        return curr
+            
