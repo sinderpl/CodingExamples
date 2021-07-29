@@ -24,7 +24,7 @@ class Solution:
 
 
     # Works but has extra space complexity
-     def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
+    def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
         appears = set(nums)
         result = list()
         
@@ -33,3 +33,18 @@ class Solution:
                 result.append(num)
         
         return result
+
+    # Flip the bits and see if you saw the index before in the original arr
+    def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
+        res = list()
+
+        for idx in range(0, len(nums)):
+            val = abs(nums[idx]) - 1
+            if nums[val] > 0:
+                nums[val] = -nums[val]
+                
+        for idx in range(0, len(nums)):
+            if nums[idx] >= 0:
+                res.append(idx+1)
+
+        return res
