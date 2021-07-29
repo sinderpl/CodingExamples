@@ -23,7 +23,6 @@ class Solution:
                 
         return third if third != -sys.maxsize else first
 
-
     def thirdMax(self, nums: List[int]) -> int:
         if len(nums) < 2:
             return nums[0]
@@ -35,14 +34,16 @@ class Solution:
         third = -sys.maxsize
         
         for idx in range(1, len(nums)):
-            if nums[idx] > first:
-                third = second
-                second = first
-                first = nums[idx]
-            elif nums[idx] > second:
-                third = second
-                second = nums[idx]
-            elif nums[idx] > third:
-                third = nums[idx]
+            currNum = nums[idx]
+            if first != currNum and second != currNum and third != currNum:
+                if currNum > first:
+                    third = second
+                    second = first
+                    first = currNum
+                elif currNum > second:
+                    third = second
+                    second = currNum
+                elif currNum > third:
+                    third = currNum
                 
         return third if third != -sys.maxsize else first
