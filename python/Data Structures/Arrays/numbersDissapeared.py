@@ -24,15 +24,12 @@ class Solution:
 
 
     # Works but has extra space complexity
-    def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
-        appears = [0] * (len(nums) + 1)
+     def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
+        appears = set(nums)
         result = list()
         
-        for num in nums:
-            appears[num] = 1
-        
-        for idx in range(1, len(appears)):
-            if appears[idx] == 0:
-                result.append(idx)
+        for num in range(1, len(nums)+1):
+            if num not in appears:
+                result.append(num)
         
         return result
