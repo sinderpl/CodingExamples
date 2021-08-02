@@ -11,11 +11,13 @@ import (
 	"fmt"
 	"net/mail"
 	"os"
+	"strings"
 )
 
 const (
-	notOpened = "The selected file could not be opened"
-	notRead   = "The selected file could not be read correctly"
+	fileNotOpened = "The selected file could not be opened"
+	fileNotRead   = "The selected file could not be read correctly"
+	emailNotFound = "The email could not be found: "
 )
 
 type custData struct {
@@ -26,33 +28,34 @@ type custData struct {
 }
 
 // Parse file content and validate for any errors
-func ParseFileContent(fileContent [][]string) []string {
+func ParseFileContent(fileContent [][]string) map[string]int {
 
-	for _, line := range fileContent[1:30] {
+	customerDomains := make(map[string]int)
+	for _, line := range fileContent[1 : len(fileContent)-2] {
 		// custEmail := line[2]
+		custDomain, err := getCustomerDomain(line)
 
+		if err != nil {
+			fmt.Println(err)
+		} else {
+			customerDomains[custDomain] += 1
+		}
 	}
-	return nil
-
+	return customerDomains
 }
 
 func getCustomerDomain(line []string) (string, error) {
-	// domain = nil
-
-	// Test the correct cell
-	domain, err := mail.ParseAddress(line[2])
-
+	email, err := mail.ParseAddress(line[2])
 	if err != nil {
-		fmt.Println(err)
+		return "", err
 	}
 
-	fmt.Println(domain)
-	// If not found in cell test other ones
-	// for _, cell := range line{
-
-	// }
-
-	return "domain", nil
+	lastAt := strings.LastIndex(email.Address, "@")
+	domain := email.Address[lastAt+1:]
+	if domain != "" {
+		return domain, nil
+	}
+	return "", errors.New(emailNotFound + line[2])
 }
 
 // Reads in the specified file and returns the contents
@@ -60,19 +63,20 @@ func ReadFileContents(fileName string) ([][]string, error) {
 
 	csvFile, err := os.Open(fileName)
 	if err != nil {
-		return nil, errors.New(notOpened)
+		return nil, errors.New(fileNotOpened)
 	}
 
 	defer csvFile.Close()
 
 	csvLines, err := csv.NewReader(csvFile).ReadAll()
 	if err != nil {
-		return nil, errors.New(notRead)
+		return nil, errors.New(fileNotRead)
 	}
 
 	return csvLines, nil
 }
 
+//Unrelated
 func printCustomers(fileContent [][]string) {
 	for _, line := range fileContent[1:] {
 		cust := custData{
