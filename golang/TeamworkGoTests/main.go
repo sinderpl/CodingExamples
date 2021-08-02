@@ -13,6 +13,6 @@ func main() {
 		fmt.Println(err)
 	} else {
 		uniqueDomains := customerimporter.FilterCustomerDomains(fileContent)
-		fmt.Println(uniqueDomains)
+		fmt.Println(customerimporter.SortDomains(uniqueDomains))
 	}
 }

@@ -11,6 +11,7 @@ import (
 	"fmt"
 	"net/mail"
 	"os"
+	"sort"
 	"strings"
 )
 
@@ -19,6 +20,32 @@ const (
 	fileNotRead   = "The selected file could not be read correctly"
 	emailNotFound = "The email could not be found at cell: "
 )
+
+func SortDomains(customerDomains map[string]int) PairList {
+	keys := make(PairList, len(customerDomains))
+	idx := 0
+
+	for key, value := range customerDomains {
+		keys[idx] = Pair{key, value}
+		idx++
+	}
+
+	sort.Sort(sort.Reverse(keys))
+
+	return keys
+}
+
+// Sort interface implementation
+type Pair struct {
+	Key   string
+	Value int
+}
+
+type PairList []Pair
+
+func (p PairList) Len() int           { return len(p) }
+func (p PairList) Less(i, j int) bool { return p[i].Value < p[j].Value }
+func (p PairList) Swap(i, j int)      { p[i], p[j] = p[j], p[i] }
 
 // Parse file content and validate for any errors
 func FilterCustomerDomains(fileContent [][]string) map[string]int {
