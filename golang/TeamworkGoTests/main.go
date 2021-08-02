@@ -9,8 +9,10 @@ const fileName = "data/customers.csv"
 
 func main() {
 	fileContent, err := customerimporter.ReadFileContents(fileName)
-	fmt.Println(err)
-	uniqueDomains := customerimporter.ParseFileContent(fileContent)
-	fmt.Println(uniqueDomains)
-
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		uniqueDomains := customerimporter.FilterCustomerDomains(fileContent)
+		fmt.Println(uniqueDomains)
+	}
 }

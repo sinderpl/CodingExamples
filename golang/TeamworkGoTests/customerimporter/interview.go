@@ -34,6 +34,7 @@ func FilterCustomerDomains(fileContent [][]string) map[string]int {
 	return customerDomains
 }
 
+// Attempt to read the customer domain
 func getCustomerDomain(line []string) (string, error) {
 	if len(line) <= 2 {
 		return "", errors.New(emailNotFound)
