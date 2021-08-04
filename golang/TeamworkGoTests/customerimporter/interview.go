@@ -95,23 +95,3 @@ func ReadFileContents(fileName string) ([][]string, error) {
 	}
 	return csvLines, nil
 }
-
-//Unrelated
-type custData struct {
-	Name   string
-	Email  string
-	Gender string
-	IP     string
-}
-
-func printCustomers(fileContent [][]string) {
-	for _, line := range fileContent[1:] {
-		cust := custData{
-			Name:   line[0] + " " + line[1],
-			Email:  line[2],
-			Gender: line[3],
-			IP:     line[4],
-		}
-		fmt.Println(cust)
-	}
-}
