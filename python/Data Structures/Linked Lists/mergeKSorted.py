@@ -4,32 +4,32 @@
 #         self.val = val
 #         self.next = next
 class Solution:
+
+    # This works and uses no extra space complexity but is very slow
+    # Complexity of O(n * m)
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
-        if lists == None:
+        if lists == None or len(lists) == 0:
             return None
         
         head = ListNode(-1)
         curr = head
         
         while len(lists) >= 1:
-            print(lists)
-            print("----------")
             index = 0
             currSmall = sys.maxsize
             nodeRef = None
             
             for count, value in enumerate(lists):
-                print("val", value.val, "comparison", currSmall)
                 if value and value.val <= currSmall:
-                    print("current smallest value" , value.val)
                     index = count
                     currSmall = value.val
                     nodeRef = value
             
-            curr.next = nodeRef
-            curr = curr.next
-            
-            lists[index] = nodeRef.next
+            if nodeRef:
+                curr.next = nodeRef
+                curr = curr.next
+
+                lists[index] = nodeRef.next
             if lists[index] == None:
                 lists.pop(index)
             
