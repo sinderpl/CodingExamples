@@ -35,3 +35,23 @@ class Solution:
             
         
         return head.next
+
+
+# This should be a better complexity
+def mergeKLists2(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+        if lists == None or len(lists) == 0:
+            return None
+        
+        head = ListNode(-1)
+        curr = head
+        currentValues = []
+        
+        while len(lists) >= 1:
+            lists = [item for item in lists if item != None]
+            if len(lists) == 0:
+                break
+            lists.sort(key=lambda x: x.val)
+            curr.next = lists[0]
+            curr = curr.next
+            lists[0] = lists[0].next
+        return head.next
