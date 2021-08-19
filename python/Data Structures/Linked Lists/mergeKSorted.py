@@ -37,21 +37,43 @@ class Solution:
         return head.next
 
 
-# This should be a better complexity
-def mergeKLists2(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+    # This should be a better complexity
+    def mergeKLists2(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+            if lists == None or len(lists) == 0:
+                return None
+            
+            head = ListNode(-1)
+            curr = head
+            
+            # n * m space complexity
+            while len(lists) >= 1:
+                lists = [item for item in lists if item != None]
+                if len(lists) == 0:
+                    break
+                lists.sort(key=lambda x: x.val)
+                curr.next = lists[0]
+                curr = curr.next
+                lists[0] = lists[0].next
+            return head.next
+
+    def mergeKLists4(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
         if lists == None or len(lists) == 0:
             return None
         
+        nodes = []
         head = ListNode(-1)
         curr = head
-        currentValues = []
         
-        while len(lists) >= 1:
-            lists = [item for item in lists if item != None]
-            if len(lists) == 0:
-                break
-            lists.sort(key=lambda x: x.val)
-            curr.next = lists[0]
+        # n * m running complexity
+        # n * m space complexity
+        for l in lists:
+            while l:
+                nodes.append(l)
+                l = l.next
+                
+        #Sorting for logN
+        for k in sorted(nodes, key=lambda x: x.val):
+            curr.next = k
             curr = curr.next
-            lists[0] = lists[0].next
+        
         return head.next
