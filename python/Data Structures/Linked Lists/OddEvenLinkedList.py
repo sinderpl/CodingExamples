@@ -32,3 +32,20 @@ class Solution:
         
         return res
         
+
+    # The actual solution, no extra space and oN runtime
+    def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if head == None or head.next == None:
+            return head
+
+        odd = head
+        even = head.next
+        evenHead = even
+        
+        while even and even.next:
+            odd.next = even.next
+            odd = odd.next
+            even.next = odd.next
+            even = even.next
+        odd.next = evenHead
+        return head
