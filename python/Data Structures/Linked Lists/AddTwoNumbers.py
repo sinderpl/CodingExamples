@@ -24,8 +24,8 @@ class Solution:
                 l2 = l2.next
             
             if currTotal > 9:
-                carryOver = currTotal - 9
-                currTotal = 0
+                carryOver = currTotal // 10
+                currTotal = currTotal % 10
             else:
                 carryOver = 0
             
