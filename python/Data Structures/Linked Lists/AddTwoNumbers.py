@@ -12,31 +12,19 @@ class Solution:
         
         result = ListNode()
         head = result
-        carryOver = 0
+        carry = 0
         
-        while l1 or l2:
-            currTotal = carryOver
+        while l1 or l2 or carry != 0:
             if l1:
-                currTotal += l1.val
+                carry += l1.val
                 l1 = l1.next
             if l2:
-                currTotal += l2.val
+                carry += l2.val
                 l2 = l2.next
-            
-            if currTotal > 9:
-                carryOver = currTotal // 10
-                currTotal = currTotal % 10
-            else:
-                carryOver = 0
-            
-            head.next = ListNode(currTotal)
+                
+            head.next = ListNode(carry % 10)
             head = head.next
-        
-        if carryOver != 0:
-            head.next = ListNode(carryOver)
-            head = head.next
-        
-        
+            carry = carry // 10
         
         return result.next
         
