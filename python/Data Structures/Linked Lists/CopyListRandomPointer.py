@@ -45,3 +45,38 @@ class Solution:
             
         return newHead.next
         
+
+
+
+
+
+
+
+
+        def copyRandomList(self, head: 'Node') -> 'Node':
+        if not head:
+            return None
+        
+        newHead = ptr = Node(0, None, None)
+        tempPtr = head
+        
+        # Inject new nodes in between the old ones
+        while tempPtr:
+            newNode = Node(tempPtr.val, tempPtr.next, tempPtr.random)
+            tempPtr.next = newNode
+            tempPtr = newNode.next
+        
+        # Extract new nodes into their own structure
+        # Another pass needed to clean up the old nodes
+        tempPtr = head
+        while tempPtr:
+            newCopy = tempPtr.next
+            oldNext = tempPtr.next.next
+            ptr.next = newCopy
+            newCopy.random = newCopy.random.next if newCopy.random else None
+            tempPtr = tempPtr.next.next
+            ptr = ptr.next
+        
+        ptr.next = None
+            
+        return newHead.next
