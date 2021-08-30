@@ -78,3 +78,35 @@ class Solution:
     def flatten(self, head: 'Node') -> 'Node':
         self.flattenRecursive(head)
         return head
+
+
+
+
+
+
+
+    # Solution with extra space complexity
+    def flatten(self, head: 'Node') -> 'Node':
+        # self.flattenRecursive(head)
+        
+        if not head:
+            return None
+        firstNode = ptr = Node(0, None, None, None)
+        stack = [head]
+        
+        while stack:
+            curr = stack.pop()
+            
+            if curr.next:
+                stack.append(curr.next)
+            if curr.child:
+                stack.append(curr.child)
+            
+            ptr.next =  curr
+            curr.prev = ptr
+            ptr = ptr.next
+            ptr.child = None
+            
+        firstNode.next.prev = None
+        
+        return firstNode.next
