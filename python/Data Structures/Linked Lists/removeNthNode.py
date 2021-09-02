@@ -14,7 +14,6 @@ class Solution:
         # Increment the fast pointer up to N if possible
         for _ in range(n):
             fast = fast.next
-
             
         # If we need to delete the first value in the list
         # this will not cover the edge case where n > len(head)

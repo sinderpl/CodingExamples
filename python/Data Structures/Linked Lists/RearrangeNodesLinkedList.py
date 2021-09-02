@@ -8,7 +8,6 @@ class Solution:
         """
         Do not return anything, modify head in-place instead.
         """
-        
         ptr = head.next
         stack = list()
         
@@ -21,4 +20,5 @@ class Solution:
             head.next = stack.pop() if end else stack.pop(0)
             head.next.next = None
             end = not end
+            head = head.next
             
